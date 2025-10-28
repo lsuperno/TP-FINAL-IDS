@@ -38,9 +38,13 @@ def blog():
 def blog_grilla():
     return render_template('blog-grid.html')
 
-@app.route('/nosotros')
-def nosotros():
-    return render_template('about-us.html')
+@app.route('/ingresar')
+def ingresar():
+    return render_template('ingresar.html')
+
+@app.route('/crear_cuenta')
+def crear_cuenta():
+    return render_template('crear_cuenta.html')
 
 @app.errorhandler(404)
 def page_not_found(e):
