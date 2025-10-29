@@ -10,10 +10,10 @@
             <div class="row align-items-center">
                 <div class="col-lg-6 offset-lg-3 col-md-12 col-12">
                     <div class="breadcrumbs-content">
-                        <h1 class="page-title">Sign Up</h1>
+                        <h1 class="page-title">Registrar cuenta</h1>
                         <ul class="breadcrumb-nav">
-                            <li><a href="{{ url_for('main')}}">Home</a></li>
-                            <li>Sign Up</li>
+                            <li><a href="{{ url_for('main')}}">Inicio</a></li>
+                            <li>Registrate</li>
                         </ul>
                     </div>
                 </div>
@@ -30,45 +30,44 @@
                     <form class="card login-form inner-content" method="post">
                         <div class="card-body">
                             <div class="title">
-                                <h3>Sign Up Now</h3>
-                                <p>Use the form below to create your account.</p>
+                                <h3>Registrate ahora</h3>
+                                <p>Completa el formulario para crear tu cuenta.</p>
                             </div>
                             <div class="alt-option">
-                                <span class="small-title">Sign up with your work email</span>
+                                <span class="small-title">Registrate con tu cuenta de trabajo.</span>
                                 <a href="javascript:void(0)" class="option-button"><img
-                                        src="{{ url_for('static', filename='images/account-login/google.png') }}" alt="#">Sign
-                                    Up With Google
+                                        src="{{ url_for('static', filename='images/account-login/google.png') }}" alt="#">Crea tu cuenta con Google
                                 </a>
                             </div>
-                            <div class="or"><span>Or</span></div>
+                            <div class="or"><span>O</span></div>
                             <div class="input-head">
                                 <div class="row">
                                     <div class="col-lg-6 col-12">
                                         <div class="form-group input-group">
                                             <label><i class="lni lni-user"></i></label>
-                                            <input class="form-control" type="text" placeholder="Your name" required>
+                                            <input class="form-control" type="text" placeholder="Tu nombre" required>
                                         </div>
                                     </div>
                                     <div class="col-lg-6 col-12">
                                         <div class="form-group input-group">
                                             <label><i class="lni lni-envelope"></i></label>
-                                            <input class="form-control" type="email" placeholder="Your email" required>
+                                            <input class="form-control" type="email" placeholder="Tu email" required>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="form-group input-group">
                                     <label><i class="lni lni-lock-alt"></i></label>
-                                    <input class="form-control" type="password" placeholder="Your password" required>
+                                    <input class="form-control" type="password" placeholder="Tu contraseña" required>
                                 </div>
                                 <div class="form-group input-group">
                                     <label><i class="lni lni-lock-alt"></i></label>
-                                    <input class="form-control" type="password" placeholder="Confirm password" required>
+                                    <input class="form-control" type="password" placeholder="Confirmar contraseña" required>
                                 </div>
                             </div>
                             <div class="button">
-                                <button class="btn" type="submit">Create Account</button>
+                                <button class="btn" type="submit">Crear cuenta</button>
                             </div>
-                            <h4 class="create-account">Already have an account? <a href="{{ url_for('iniciar_sesion')}}">Sign In</a>
+                            <h4 class="create-account">¿Ya tenes una cuenta? <a href="{{ url_for('ingresar')}}">Inicia sesión</a>
                             </h4>
                         </div>
                     </form>
