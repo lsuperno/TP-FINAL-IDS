@@ -72,8 +72,8 @@ button:focus,
 }
 
 .form-check-input:checked {
-  background-color: #fffcf8;
-  border-color: #fffcf8;
+  background-color: #444;
+  border-color: #444;
 }
 
 select {
@@ -1319,8 +1319,8 @@ ol {
   font-size: 15px;
   font-weight: 500;
   padding: 14px 30px;
-  background-color: #fffcf8; /* <- agregado ; */
-  color: #fff;
+  background-color: #fefbf5; /* <- agregado ; */
+  color: #555;;
   border: none;
   -webkit-transition: all 0.4s ease;
   transition: all 0.4s ease;
