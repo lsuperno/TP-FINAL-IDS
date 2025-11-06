@@ -1,18 +1,61 @@
-from flask import Flask, render_template, url_for
+from flask import Flask, render_template, request, redirect, url_for
 
 app = Flask(__name__)
+
+@app.route('/register', methods=['GET', 'POST'])
+def register():
+    if request.method == 'POST':
+        
+        nombre = request.form.get('nombre')
+        email = request.form.get('email')
+        contrasena = request.form.get('contrasena')
+        confirmar_contrasena = request.form.get('confirmar_contrasena')
+        presupuesto = request.form.get('presupuesto')
+        periodo = request.form.get('periodo')
+        tipo_cuenta = request.form.get('tipo_cuenta')
+
+        # Validación simple
+        if not nombre or not email or not contrasena:
+            flash("Todos los campos obligatorios deben completarse", "error")
+            return redirect(url_for('login'))
+
+        if contrasena != confirmar_contrasena:
+            flash("Las contraseñas no coinciden", "error")
+            return redirect(url_for('register'))
+
+        # En el futuro: guardar datos en la base de datos
+        # guardar_usuario(nombre, email, contrasena, presupuesto, periodo, tipo_cuenta)
+
+        flash("Cuenta creada con éxito. Ahora podés ingresar.", "success")
+        return redirect(url_for('login'))
+
+    # Si es GET, solo mostramos el formulario
+    return render_template('register.html')
+
+
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    if request.method == 'POST':
+        # Capturar los datos del formulario
+        email = request.form.get('email')
+        contrasena = request.form.get('contrasena')
+
+        flash(f"Inicio de sesión simulado: {email}", "success")
+        return redirect(url_for('dashboard'))  
+    
+    # Si es GET, mostrar el formulario
+    return render_template('login.html')
+
+
+@app.route('/dashboard')
+def dashboard():
+    return render_template('dashboard.html')
+
 
 @app.route('/')
 def main():
     return render_template('index.html')
 
-@app.route('/iniciar_sesion')
-def iniciar_sesion():
-    return render_template('signin.html')
-
-@app.route('/registrar_cuenta')
-def registrar_cuenta():
-    return render_template('signup.html')
 
 @app.route('/cambiar_contraseña')
 def cambiar_contraseña():
@@ -38,13 +81,6 @@ def blog():
 def blog_grilla():
     return render_template('blog-grid.html')
 
-@app.route('/ingresar')
-def ingresar():
-    return render_template('ingresar.html')
-
-@app.route('/crear_cuenta')
-def crear_cuenta():
-    return render_template('crear_cuenta.html')
 
 @app.errorhandler(404)
 def page_not_found(e):

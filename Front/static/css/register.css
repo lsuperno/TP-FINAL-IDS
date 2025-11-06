@@ -1,0 +1,151 @@
+/* === Estilos personalizados para la página de registro === */
+.account-login {
+  background-color: #ffffff;
+  padding: 60px 0;
+}
+
+.login-form.card {
+  background-color: #708238;
+  border-radius: 20px;
+  padding: 40px 30px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+  text-align: center;
+}
+
+.login-form .title h3 {
+  color: #ffffff;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.login-form .title p {
+  color: #f4f4f4;
+  margin-bottom: 25px;
+}
+
+.input-group {
+  background-color: #ffffff;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+  padding: 8px 12px;
+}
+
+.input-group label {
+  color: #708238;
+  margin-right: 8px;
+  font-size: 18px;
+}
+
+.input-group input,
+.input-group select {
+  border: none;
+  outline: none;
+  background: transparent;
+  width: 100%;
+  color: #000;
+  font-size: 15px;
+}
+
+.input-group select {
+  max-width: 120px;
+}
+
+/* === TIPO DE CUENTA === */
+.account-type {
+  text-align: left;
+  margin-top: 20px;
+  background: #708238;
+  border-radius: 8px;
+  padding: 15px;
+  color: white;
+}
+
+.account-type label {
+  font-weight: bold;
+  display: block;
+  margin-bottom: 10px;
+  color: white;
+}
+
+.account-type .options {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.account-type .options label {
+  display: flex;
+  align-items: center;
+  font-weight: normal;
+  color: white;
+}
+
+.account-type .options input[type="radio"] {
+  margin-right: 6px;
+  accent-color: #f9f871;
+}
+
+/* === PRESUPUESTO === */
+.presupuesto {
+  text-align: left;
+  margin-top: 20px;
+  background: #ffffff;
+  border-radius: 8px;
+  padding: 15px;
+}
+
+.presupuesto label {
+  color: #708238;
+  font-weight: 600;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.presupuesto .input-group {
+  background: #fff;
+  border: 1px solid #ccc;
+  padding: 8px 12px;
+  border-radius: 6px;
+  margin-bottom: 12px;
+}
+
+.presupuesto .frecuencia {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.presupuesto .frecuencia label {
+  display: flex;
+  align-items: center;
+  font-weight: normal;
+  color: #000;
+}
+
+.presupuesto .frecuencia input[type="radio"] {
+  margin-right: 6px;
+  accent-color: #708238;
+}
+
+/* === BOTONES === */
+.button .btn {
+  background-color: #ffffff;
+  color: #708238;
+  font-weight: 600;
+  border-radius: 12px;
+  padding: 10px 25px;
+  border: none;
+  transition: 0.3s;
+}
+
+.button .btn:hover {
+  background-color: #e0e0e0;
+}
+
+.create-account {
+  margin-top: 20px;
+  color: #fff;
+}

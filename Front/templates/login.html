@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block title %} Iniciar sesión {% endblock %}
+
+{% block head %}
+{{ super() }}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">>
+{% endblock %}
+
+{% block body %}
+<section class="account-login">
+  <div class="container">
+    <div class="login-form card">
+      <div class="title">
+        <h3>Iniciar sesión</h3>
+        <p>Accedé a tu cuenta para gestionar tus datos</p>
+      </div>
+
+      <form method="POST" action="{{ url_for('login') }}">
+        <div class="input-group">
+          <label for="email"><i class="fa fa-envelope"></i></label>
+          <input type="email" id="email" name="email" placeholder="Correo electrónico" required>
+        </div>
+
+        <div class="input-group">
+          <label for="password"><i class="fa fa-lock"></i></label>
+          <input type="password" id="password" name="password" placeholder="Contraseña" required>
+        </div>
+
+        <div class="button">
+          <button type="submit" class="btn">Ingresar</button>
+        </div>
+
+        <div class="create-account">
+          <p>¿No tenés cuenta?
+            <a href="{{ url_for('register') }}">Crear cuenta</a>
+          </p>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+{% endblock %}
