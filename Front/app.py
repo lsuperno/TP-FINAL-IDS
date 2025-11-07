@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request, redirect, url_for, flash
 
 app = Flask(__name__)
 
@@ -31,8 +31,7 @@ def register():
 
     # Si es GET, solo mostramos el formulario
     return render_template('register.html')
-
-
+    
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
@@ -87,4 +86,4 @@ def page_not_found(e):
     return render_template('404.html'), 404
 
 if __name__ == '__main__':
-    app.run('localhost', port=8080, debug = True)
+    app.run(host='0.0.0.0', port=8080, debug=True)
