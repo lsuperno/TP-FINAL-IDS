@@ -1,31 +1,33 @@
 /* === Estilos personalizados para la página de registro === */
 .account-login {
-  background-color: #ffffff;
+  background-color: #fffcf8;
   padding: 60px 0;
 }
 
 .login-form.card {
-  background-color: #708238;
+  background-color: #3b7a52;
   border-radius: 20px;
-  padding: 40px 30px;
+  padding: 25px 30px;
+  max-width: 500px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
   text-align: center;
+  margin-bottom: 50px;
 }
 
 .login-form .title h3 {
-  color: #ffffff;
+  color: #fffcf8;
   font-weight: 600;
   margin-bottom: 10px;
 }
 
 .login-form .title p {
-  color: #f4f4f4;
+  color: #fffcf8;
   margin-bottom: 25px;
 }
 
 .input-group {
-  background-color: #ffffff;
-  border-radius: 8px;
+  background-color: #fffcf8;
+  border-radius: 150px !important;
   margin-bottom: 15px;
   display: flex;
   align-items: center;
@@ -33,7 +35,7 @@
 }
 
 .input-group label {
-  color: #708238;
+  color: #3b7a52;
   margin-right: 8px;
   font-size: 18px;
 }
@@ -56,7 +58,7 @@
 .account-type {
   text-align: left;
   margin-top: 20px;
-  background: #708238;
+  background: #3b7a52;
   border-radius: 8px;
   padding: 15px;
   color: white;
@@ -84,7 +86,7 @@
 
 .account-type .options input[type="radio"] {
   margin-right: 6px;
-  accent-color: #f9f871;
+  accent-color: #0e4422;
 }
 
 /* === PRESUPUESTO === */
@@ -97,7 +99,7 @@
 }
 
 .presupuesto label {
-  color: #708238;
+  color: #3b7a52;
   font-weight: 600;
   display: block;
   margin-bottom: 8px;
@@ -127,13 +129,13 @@
 
 .presupuesto .frecuencia input[type="radio"] {
   margin-right: 6px;
-  accent-color: #708238;
+  accent-color: #0e4422;
 }
 
 /* === BOTONES === */
 .button .btn {
-  background-color: #ffffff;
-  color: #708238;
+  background-color: #3b7a52;
+  color: #ffffff;
   font-weight: 600;
   border-radius: 12px;
   padding: 10px 25px;

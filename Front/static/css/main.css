@@ -924,8 +924,8 @@ ol {
   padding-bottom: 120px;
   z-index: 2;
   text-align: left;
-  background-color: #081828;
-  background-image: url("../images/bread-bg/banner-bg.svg");
+  background-color: #041406;
+  background-image: url("../images/bread-bg/banner.jpg"); /*imagen del banner*/
   background-size: cover;
   background-position: right;
   background-repeat: no-repeat;
@@ -940,7 +940,7 @@ ol {
   top: 0;
   height: 100%;
   width: 100%;
-  background-color: #081828;
+  background-color: #000000;
   opacity: 0.7;
 }
 
@@ -1191,7 +1191,7 @@ ol {
   width: 45px;
   height: 45px;
   line-height: 45px;
-  background: #fffcf8;
+  background: #494949;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1202,7 +1202,7 @@ ol {
       -ms-flex-align: center;
           align-items: center;
   font-size: 14px;
-  color: #fff !important;
+  color: #b9b9b9 !important;
   position: fixed;
   bottom: 30px;
   right: 30px;
@@ -1320,7 +1320,7 @@ ol {
   font-weight: 500;
   padding: 14px 30px;
   background-color: #fefbf5; /* <- agregado ; */
-  color: #555;;
+  color: #414040;;
   border: none;
   -webkit-transition: all 0.4s ease;
   transition: all 0.4s ease;
@@ -2024,12 +2024,12 @@ ol {
 }
 
 .sticky .button .btn {
-  background-color: #2ed06e;
+  background-color: #299b1e;
   color: #fff;
 }
 
 .sticky .button .btn:hover {
-  background-color: #2ed06e;
+  background-color: #299b1e;
   color: #fff;
 }
 
@@ -2038,14 +2038,14 @@ ol {
     color: #081828;
   }
   .header .button .signin:hover {
-    color: #2ed06e;
+    color: #3b7a52;
   }
   .header .button .signup {
-    background-color: #2ed06e;
+    background-color: #3b7a52;
     color: #fff;
   }
   .header .button .signup:hover {
-    background-color: #2ed06e;
+    background-color: #3b7a52;
     color: #fff;
   }
 }
@@ -2112,7 +2112,7 @@ ol {
 }
 
 .hero-area .hero-content h4 {
-  color: #738b25;
+  color: #3b7a52;
   font-weight: 600;
   font-size: 15px;
   margin-bottom: 20px;
@@ -2122,7 +2122,7 @@ ol {
   font-weight: 800;
   font-size: 38px;
   line-height: 50px;
-  color: #738b25;
+  color: #3b7a52;
   text-transform: capitalize;
 }
 
@@ -2131,7 +2131,7 @@ ol {
   font-size: 16px;
   line-height: 28px;
   margin-top: 20px;
-  color: #738b25;
+  color: #3b7a52;
 }
 
 .hero-area .hero-content .button {
@@ -2153,7 +2153,7 @@ ol {
 }
 
 .hero-area .hero-content .button .btn {
-  background-color: #738b25;
+  background-color: #3b7a52;
   color: #fff;
 }
 
@@ -2165,7 +2165,7 @@ ol {
 
 .hero-area .hero-content .button .btn:hover {
   color: #ebeee2;
-  background-color: #a3df18;
+  background-color: #2a9221;
 }
 
 @media only screen and (min-width: 992px) and (max-width: 2000px) {
@@ -3836,21 +3836,12 @@ blockquote span {
 /*======================================
 	Account Login CSS
 ========================================*/
-.account-login {
-  background-color: #F4F7FA;
-}
 
 .account-login .inner-content {
   border-radius: 8px;
   overflow: hidden;
   -webkit-box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.075);
           box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.075);
-}
-
-.account-login .login-form {
-  padding: 60px 70px;
-  background-color: #fff;
-  border: none;
 }
 
 @media only screen and (min-width: 768px) and (max-width: 991px) {
@@ -3883,7 +3874,7 @@ blockquote span {
 .account-login .login-form .title h3 {
   font-size: 25px;
   font-weight: 700;
-  color: #081828;
+  color: #fffcf8 !important;
   margin-bottom: 8px;
 }
 
@@ -3916,8 +3907,8 @@ blockquote span {
   -webkit-transition: all 0.4s ease;
   transition: all 0.4s ease;
   border: 1px solid #eee;
-  background-color: #F4F7FA;
-  color: #505050;
+  background-color: #fffcf8 !important;
+  color: #34632a;
   font-size: 15px;
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -3930,17 +3921,17 @@ blockquote span {
 }
 
 .account-login .form-group .form-control:focus {
-  border-color: #2ed06e;
+  border-color: #356d3c;
   -webkit-box-shadow: 0px 5px 8px rgba(0, 0, 0, 0.233);
-          box-shadow: 0px 5px 8px rgba(0, 0, 0, 0.233);
+          box-shadow: none;
 }
 
 .account-login .lost-pass {
-  color: #888;
+  color: #1c5f1a;
 }
 
 .account-login .lost-pass:hover {
-  color: #2ed06e;
+  color: #1c5f1a;
 }
 
 .account-login .button {
@@ -3981,7 +3972,7 @@ blockquote span {
 .account-login .or span {
   text-align: center;
   font-size: 16px;
-  background-color: #fff;
+  background-color: #fffcf8;
   padding: 5px 12px;
 }
 
@@ -3991,7 +3982,7 @@ blockquote span {
   left: 0;
   top: 50%;
   margin-top: -1px;
-  background-color: #e8e8e8;
+  background-color: #fffcf8;
   height: 1px;
   width: 100%;
   z-index: -1;
@@ -4014,7 +4005,7 @@ blockquote span {
   border-radius: 30px;
   display: inline-block;
   text-align: center;
-  color: #727272;
+  color: #1d5328;
 }
 
 .account-login .alt-option .option-button img {
@@ -4041,7 +4032,7 @@ blockquote span {
 }
 
 .account-login .alt-option li span {
-  color: #727272;
+  color: #1d5328;
   display: inline-block;
 }
 
@@ -4050,7 +4041,7 @@ blockquote span {
 }
 
 .account-login .alt-option li a {
-  color: #2ed06e;
+  color: #156836;
 }
 
 .account-login .alt-option li a:hover {
@@ -4066,9 +4057,6 @@ blockquote span {
   display: block;
 }
 
-.account-login .create-account a {
-  color: #2ed06e;
-}
 
 .account-login .create-account a:hover {
   text-decoration: underline;
@@ -4846,7 +4834,7 @@ blockquote span {
 	Footer CSS
 ========================================*/
 .footer {
-  background-color: #68902b;
+  background-color: #2a5b3a;
   position: relative;
   padding-bottom: 0;
 }
@@ -5091,4 +5079,11 @@ blockquote span {
 
 .footer .copyright-area p a:hover {
   color: #2ed06e;
+}
+
+.footer, 
+.footer .footer-top, 
+.footer .inner-content, 
+.footer .copyright-area {
+  box-shadow: none !important;
 }

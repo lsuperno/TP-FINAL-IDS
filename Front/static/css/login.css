@@ -1,11 +1,11 @@
 /* === Estilos personalizados para la página de ingreso === */
 .account-login {
-  background-color: #ffffff;
+  background-color: #fffcf8;
   padding: 60px 0;
 }
 
 .login-form.card {
-  background-color: #708238; /* Verde oliva */
+  background-color: #3b7a52 !important;
   border-radius: 20px;
   padding: 40px 30px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
@@ -35,7 +35,7 @@
 }
 
 .input-group label {
-  color: #708238;
+  color: #3b7a52;
   margin-right: 8px;
   font-size: 18px;
 }
@@ -51,10 +51,10 @@
 
 /* === Botón principal === */
 .button .btn {
-  background-color: #ffffff;
-  color: #708238;
+  background-color: #225233 !important; /* color del boton ingresar */
+  color: #ffffff !important;            
+  border-radius: 30px;       
   font-weight: 600;
-  border-radius: 12px;
   padding: 10px 25px;
   border: none;
   transition: all 0.3s ease;
@@ -62,7 +62,7 @@
 }
 
 .button .btn:hover {
-  background-color: #e0e0e0;
+  background-color: #153820 !important;
   transform: scale(1.03);
 }
 
@@ -73,7 +73,7 @@
 }
 
 .create-account a {
-  color: #f9f871;
+  color: #6df879;
   font-weight: 600;
   text-decoration: underline;
 }
