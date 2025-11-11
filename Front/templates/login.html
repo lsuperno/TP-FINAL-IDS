@@ -27,6 +27,16 @@
 </div>
 <!-- End Breadcrumbs -->
 
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    {% for msg in messages %}
+      <div class="mensaje_flash_error">
+        <p>{{ msg }}</p>
+      </div>
+    {% endfor %}
+  {% endif %}
+{% endwith %}
+
 <section class="account-login">
   <div class="container">
     <div class="login-form card">
@@ -43,7 +53,7 @@
 
         <div class="input-group">
           <label for="password"><i class="fa fa-lock"></i></label>
-          <input type="password" id="password" name="password" placeholder="Contraseña" required>
+          <input type="password" id="password" name="contrasena" placeholder="Contraseña" required>
         </div>
 
         <div class="button">

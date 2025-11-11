@@ -27,12 +27,29 @@
 </div>
 <!-- End Breadcrumbs -->
 
+{% with messages = get_flashed_messages(with_categories=true) %}
+  {% if messages %}
+    {% for category, msg in messages %}
+      {% set code = category | int %}
+      {% if code == 201 %}
+      <div class="mensaje_flash_succes">
+        <p><a href="{{ url_for('login')}}">{{ msg }}</a></p>
+      </div>
+      {% else %}
+      <div class="mensaje_flash_error">
+        <p>{{ msg }}</p>
+      </div>
+      {% endif %}
+    {% endfor %}
+  {% endif %}
+{% endwith %}
+
 <!-- Start Account Signup Area -->
 <div class="account-login section">
   <div class="container">
     <div class="row">
       <div class="col-lg-6 offset-lg-3 col-md-10 offset-md-1 col-12">
-        <form class="card login-form inner-content" method="post">
+        <form class="card login-form inner-content" method="POST">
           <div class="card-body">
             <div class="title">
               <h3>Registrate ahora</h3>
@@ -42,22 +59,22 @@
             <div class="input-head">
               <div class="form-group input-group">
                 <label><i class="lni lni-user"></i></label>
-                <input class="form-control" type="text" placeholder="Tu nombre completo" required>
+                <input class="form-control" type="text" name="nombre" placeholder="Tu nombre completo" required>
               </div>
 
               <div class="form-group input-group">
                 <label><i class="lni lni-envelope"></i></label>
-                <input class="form-control" type="email" placeholder="Tu email" required>
+                <input class="form-control" type="email" name="email" placeholder="Tu email" required>
               </div>
 
               <div class="form-group input-group">
                 <label><i class="lni lni-lock-alt"></i></label>
-                <input class="form-control" type="password" placeholder="Tu contraseña" required>
+                <input class="form-control" type="password" name="contrasena" placeholder="Tu contraseña" required>
               </div>
 
               <div class="form-group input-group">
                 <label><i class="lni lni-lock-alt"></i></label>
-                <input class="form-control" type="password" placeholder="Confirmar contraseña" required>
+                <input class="form-control" type="password" name="confirmar_contrasena"placeholder="Confirmar contraseña" required>
               </div>
 
               

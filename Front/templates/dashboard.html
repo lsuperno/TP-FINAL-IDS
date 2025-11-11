@@ -1,5 +1,16 @@
 {% extends "base.html" %}
+
+{% block title%} Mi cuenta {% endblock %}
+
 {% block body %}
-<h2>Bienvenida a tu cuenta</h2>
-<p>contenido principal de la aplicación.</p>
+
+<div class = 'info_usuario'>
+    <h3>Bienvenido {{session['user_id']}}</h3>
+    <form action="{{ url_for('logout') }}" method="POST">
+    <button type="submit">Cerrar sesión</button>
+    </form>
+</div>
+
+<h1>Mi alacena</h1>
+
 {% endblock %}

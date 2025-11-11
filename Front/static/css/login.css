@@ -1,4 +1,14 @@
 /* === Estilos personalizados para la página de ingreso === */
+.mensaje_flash_error {
+  padding: 10px;
+  background-color: red;
+  text-align: center;
+}
+
+.mensaje_flash_error p {
+  color: #ffffff;
+}
+
 .account-login {
   background-color: #fffcf8;
   padding: 60px 0;

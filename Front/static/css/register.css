@@ -1,4 +1,29 @@
 /* === Estilos personalizados para la página de registro === */
+.mensaje_flash_succes {
+  padding: 10px;
+  background-color: green;
+  text-align: center;
+}
+
+.mensaje_flash_succes a {
+  color: #ffffff;
+  text-decoration: underline;
+}
+
+.mensaje_flash_succes:hover a {
+  transform: scale(1.1);
+}
+
+.mensaje_flash_error {
+  padding: 10px;
+  background-color: red;
+  text-align: center;
+}
+
+.mensaje_flash_error p {
+  color: #ffffff;
+}
+
 .account-login {
   background-color: #fffcf8;
   padding: 60px 0;

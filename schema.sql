@@ -1,0 +1,9 @@
+USE alacenapp
+
+CREATE TABLE IF NOT EXISTS usuarios (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(100),
+    email VARCHAR(255) UNIQUE NOT NULL,
+    contrasena VARCHAR(255) NOT NULL,
+    presupuesto DECIMAL(10, 2) DEFAULT 0.00
+);
