@@ -37,6 +37,9 @@ Desarrollada con con backend en Flask, base de datos MySQL y frontend en HTML, C
    - quantity (INT)
    - expiry_date (DATE)
    - (Opcional): shared_groups, shared_group_users para cuentas compartidas.
+ ##### FAMILY_GROUP
+   - ID_FAMILY
+   - ID USER
 
 #### 🌐 Implementar rutas API REST
 
