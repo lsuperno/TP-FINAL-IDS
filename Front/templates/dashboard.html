@@ -1,16 +1,60 @@
 {% extends "base.html" %}
 
-{% block title%} Mi cuenta {% endblock %}
+{% block title %}Dashboard{% endblock %}
 
 {% block body %}
 
-<div class = 'info_usuario'>
-    <h3>Bienvenido {{session['user_id']}}</h3>
-    <form action="{{ url_for('logout') }}" method="POST">
-    <button type="submit">Cerrar sesión</button>
-    </form>
-</div>
+<div class="layout">
+    <aside class="sidebar" id="sidebar">
+    <h2>Menú</h2>
+        <nav>
+            <ul>
+                <li data-seccion="inicio" >Inicio</li>
+                <li data-seccion="mi-alacena">Mi Alacena</li>
+                <li data-seccion="estadisticas">Estadisticas</li>
+                <li data-seccion="recetas">Recetas</li>
+            </ul>
+        </nav>
+    </aside>
 
-<h1>Mi alacena</h1>
+    <div class="main-container">
+        <header class="top-header">
+            <div class="info-usuario">
+                <h3>Alacena de: Usuario</h3>
+                <!-- Eliminado el form con url_for('logout') -->
+            </div>
+
+            <!-- Eliminado el <a href="{{ url_for('logout') }}">Salir</a> -->
+            <a class="btn-salir" href="#">Salir</a> <!-- link dummy para que no tire error -->
+        </header>
+
+        <div class="dashboard">
+            <div class="left-column">
+                <div id class="panel-container productos-total">
+                    <h3>Total de productos:</h3>
+                    <p class="numero">42</p>
+                </div>
+                <div class="panel-container productos-vencimiento">
+                    <h3>Productos por vencer:</h3>
+                    <p class="numero">42</p>
+                </div>
+            </div>
+            
+            <div class="right-column">
+                <div class="panel-container productos-agotados">
+                    <h3>Productos por agotarse:</h3>
+                    <p class="numero">42</p>
+                </div>
+                <div class="panel-container lista-sugerida">
+                    <h3>Lista de compras sugeridas:</h3>
+                        <p>• producto_1</p>
+                        <p>• producto_2</p>
+                        <p>• producto_3</p>
+                    <button class="btn">Ver lista completa</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 {% endblock %}
