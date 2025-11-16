@@ -93,12 +93,13 @@ def logout():
     session.clear() 
     return redirect(url_for('login'))
 
-
 @app.route('/dashboard')
 def dashboard():
     if "user_id" in session:
-        return render_template('dashboard.html')
+        session_id = session["user_id"]   
+        return render_template('dashboard.html', session_id=session_id)
     return redirect(url_for('register'))
+
 
 
 @app.route('/cambiar_contraseña')
@@ -132,11 +133,39 @@ def page_not_found(e):
 
 @app.route('/test-dashboard')
 def test_dashboard():
-    return render_template('dashboard.html')
+    return render_template('dashboard.html', session_id="TEST_USER_123")
 
 @app.route('/shopping_list')
 def shopping_list():
     return render_template('shopping_list.html')
+
+@app.route("/statistics")
+def statistics():
+    return render_template("statistics.html")
+
+@app.route("/recipes")
+def recipes():
+    return render_template("recipes.html")
+
+@app.route('/pantry')
+def shared_pantry():
+    shared_id = request.args.get("session")
+
+    if not shared_id:
+        return "Error: missing session ID", 400
+
+    # Llamado a tu API para traer la alacena del usuario compartido
+    response = requests.get(f"{API_BASE}/pantry/{shared_id}")
+
+    if response.status_code != 200:
+        return "Unable to load shared pantry", 404
+
+    data = response.json()
+
+
+    return render_template("shared_pantry.html", data=data, owner_id=shared_id)
+
+
 
     
 

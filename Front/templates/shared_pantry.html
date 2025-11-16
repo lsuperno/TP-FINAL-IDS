@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block title %}Shared Pantry{% endblock %}
+
+{% block body %}
+
+<div class="shared-container">
+
+    <h2>Shared Pantry – User {{ owner_id }}</h2>
+
+    {% if data %}
+        <ul class="shared-list">
+        {% for item in data %}
+            <li>
+                <strong>{{ item['name'] }}</strong> – {{ item['quantity'] }} units
+            </li>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <p>No items in this pantry.</p>
+    {% endif %}
+
+</div>
+
+{% endblock %}

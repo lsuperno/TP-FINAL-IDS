@@ -11,9 +11,11 @@
         <nav>
             <ul>
                 <li><a href="{{ url_for('shopping_list') }}">Lista del supermercado</a></li>
-                <li data-seccion="estadisticas">Estadísticas</li>
-                <li data-seccion="recetas">Recetas</li>
-                <li style="margin-top: 400px;" data-seccion="inicio">Compartir Alacena</li>
+                <li><a href="{{ url_for('statistics') }}">Estadísticas</a></li>
+                <li><a href="{{ url_for('recipes') }}">Recetas</a></li>
+                <li id="btnShare" style="margin-top: 400px;" data-seccion="inicio">Compartir Alacena</li>
+
+
             </ul>
         </nav>
     </aside>
@@ -54,6 +56,53 @@
         </div>
     </div>
 </div>
+
+
+<!-- MODAL PARA COMPARTIR -->
+<div id="shareModal" class="modal" style="display: none;">
+    <div class="modal-content">
+        <span id="closeModal" class="close">&times;</span>
+
+        <p>Compartí tu alacena con este enlace:</p>
+
+        <input id="shareLink" type="text" readonly style="width: 100%; padding: 6px; margin-bottom: 10px;">
+
+        <button id="copyBtn">Copiar enlace</button>
+    </div>
+</div>
+
+<!-- SCRIPT PARA COMPARTIR -->
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+
+    const sessionId = "{{ session_id }}";  
+    const link = window.location.origin + "/alacena?session=" + sessionId;
+
+    const modal = document.getElementById("shareModal");
+    const btn = document.getElementById("btnShare");
+    const span = document.getElementById("closeModal");
+    const shareLink = document.getElementById("shareLink");
+    const copyBtn = document.getElementById("copyBtn");
+
+    // Abrir modal
+    btn.onclick = function() {
+        shareLink.value = link;
+        modal.style.display = "flex";
+    }
+
+    // Cerrar modal
+    span.onclick = function() {
+        modal.style.display = "none";
+    }
+
+    // Copiar link
+    copyBtn.onclick = function() {
+        shareLink.select();
+        document.execCommand("copy");
+        alert("¡Link copiado!");
+    }
+});
+</script>
 
 {% endblock %}
 
