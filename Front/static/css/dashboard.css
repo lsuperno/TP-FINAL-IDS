@@ -1,137 +1,155 @@
+/* --- LAYOUT GENERAL --- */
 .layout {
-    display: flex;         /* Sidebar + contenido en fila */
-    height: 100vh;         /* Ocupa toda la pantalla */
+    display: flex;
+    height: 100vh;
+    background-color: #f0f0f0;
+    overflow: hidden;
 }
 
-/* Barra lateral a la izquierda */
+/* --- SIDEBAR --- */
 .sidebar {
-    width: 250px;
+    width: 300px;
     background-color: #3b7a52;
     color: white;
     padding: 20px;
 }
 
-.sidebar h2{
-    text-align: center;
-    color: #FFFCF8;
-}
-
 .sidebar ul {
-    display: flex;
-    flex-direction: column;
-    gap: 10px; /* separa los li */
+    list-style: none;
     padding: 0;
     margin: 0;
-    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
 }
 
 .sidebar li {
-    border: 1px solid #ddd;
-    border-radius: 12px;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
-    padding: 5px 20px;
-    font-size: 2rem;
-    background-color: #FFFCF8;
+    background: #FFFCF8;
     color: #3B7A52;
-}
-
-
-
-/* Elementos a la derecha */
-.main-container {
-    flex: 1;                /* ocupa el espacio restante */
-    display: flex;
-    flex-direction: column; /* header arriba + dashboard abajo */
-    color: #fffcf8;
-}
-
-.top-header {
-    height: 60px;
-    background: #f5f5f5;
-    display: flex;
-    align-items: center;
-    justify-content: space-between; /* separa título y botón salir */
-    
-    padding: 0 20px;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-
-    width: 100%;            /* se ajusta SOLO al ancho del main-container */
-    box-sizing: border-box; /* evita que el padding lo haga más ancho */
-}
-
-.top-header h3 {
-    color: #fff !important;
-}
-
-.info-usuario,
-.btn-salir {
-    background-color: #3B7A52;
-    color: #FFFCF8;
-    border: 1px solid #ddd;
+    padding: 12px 20px;
     border-radius: 12px;
+    font-size: 1.6rem;
     box-shadow: 0 2px 6px rgba(0,0,0,0.15);
-    padding: 20px;
+    cursor: pointer;
+    transition: 0.2s;
 }
 
-/* Área del dashboard */
-.dashboard {
-    flex: 1;               /* Ocupa el espacio restante */
-    padding: 20px;
-    display: flex;
-    justify-content: center;
-    gap: 20px; /* separación entre columnas */
+.sidebar li:hover {
+    background: #e7e4df;
 }
 
-/* ---- COLUMNAS ----- */
-.left-column,
-.right-column {
-  display: flex;
-  flex: 1;
-  flex-direction: column; /* pone las tarjetas una debajo de la otra */
-  gap: 20px;              /* espacio entre tarjetas */
-}
-
-/* ----- TARJETAS PRINCIPALES ----- */
-.panel-container {
+/* --- CONTENIDO PRINCIPAL --- */
+.main-container {
+    flex: 1;
     display: flex;
     flex-direction: column;
+}
+
+/* --- HEADER SUPERIOR --- */
+.top-header {
+    height: 60px;
+    background: transparent !important; /* Sin color */
+    display: flex;
     justify-content: space-between;
-    flex: 1;
-    width: 100%;
-    height: 180px;
-    border: 1px solid #ddd;
+    align-items: center;
+    padding: 0 20px;
+}
+
+.info-usuario {
+    padding: 10px 20px;
+    background-color: #3B7A52;
     border-radius: 12px;
-    padding: 16px;
+    color: #FFFCF8;
     box-shadow: 0 2px 6px rgba(0,0,0,0.15);
 }
 
-.panel-container h3 {
-    color: #fff !important;
+.btn-salir {
+    background-color: #3B7A52;
+    padding: 10px 18px;
+    color: #FFFCF8;
+    border-radius: 12px;
+    text-decoration: none;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
 }
 
-.numero {
-    flex: 1;                  /* Ocupa todo el espacio disponible */
+/* --- DASHBOARD --- */
+.dashboard {
+    flex: 1;
     display: flex;
     justify-content: center;
+    align-items: center; /* CENTRA verticalmente */
+}
+
+/* CONTENEDOR CENTRAL */
+.center-column {
+    width: 60%;
+    max-width: 700px;
+    display: flex;
+    flex-direction: column;
     align-items: center;
-    font-size: 15rem;          /* Ajustá el tamaño a gusto */
-    font-weight: bold;
-    margin: 0;                /* Evita espacio hacia arriba */
+    gap: 25px;
 }
 
-.productos-total{
+/* --- RECUADRO DE STOCK (CELESTE) --- */
+.stock-section {
+    width: 100%;
     background-color: #a0c9aa;
+    padding: 25px;
+    border-radius: 14px;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.15);
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
 }
 
-.productos-vencimiento{
-    background-color: #C86526;
+.stock-section h2 {
+    color: white;
+    text-align: center;
+    font-size: 2rem;
+    margin: 0;
 }
 
-.productos-agotados{
-    background-color: #699132;
+#stock-count {
+    background: white;
+    padding: 12px;
+    border-radius: 10px;
+    text-align: center;
+    font-size: 1.6rem;
+    font-weight: bold;
+    color: #333;
 }
 
-.lista-sugerida{
-    background-color: #B1CB51;
+/* TEXTAREA */
+#stock-items {
+    width: 100%;
+    height: 200px;
+    resize: none;
+    padding: 12px;
+    font-size: 1.4rem;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    background: #fffcf8;
 }
+
+/* BOTÓN ESCANEAR */
+.scan-btn {
+    padding: 14px 28px;
+    font-size: 1.6rem;
+    background-color: #225233;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.15);
+    transition: 0.3s;
+}
+
+.scan-btn:hover {
+    background-color: #43a047;
+}
+
+footer {
+    display: none !important;
+}
+
 

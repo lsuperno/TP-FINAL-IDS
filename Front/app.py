@@ -2,6 +2,8 @@ from flask import Flask, render_template, request, redirect, url_for, flash, ses
 import requests
 from datetime import timedelta
 
+print("🔥 ESTE ES EL APP.PY QUE SE ESTÁ EJECUTANDO 🔥")
+
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'IDS'
@@ -128,6 +130,11 @@ def blog_grilla():
 @app.errorhandler(404)
 def page_not_found(e):
     return render_template('404.html'), 404
+
+@app.route('/test-dashboard')
+def test_dashboard():
+    return render_template('dashboard.html')
+
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=8080, debug=True)

@@ -5,56 +5,55 @@
 {% block body %}
 
 <div class="layout">
+
+    <!-- SIDEBAR -->
     <aside class="sidebar" id="sidebar">
-    <h2>Menú</h2>
         <nav>
             <ul>
-                <li data-seccion="inicio" >Inicio</li>
-                <li data-seccion="mi-alacena">Mi Alacena</li>
-                <li data-seccion="estadisticas">Estadisticas</li>
+                <li data-seccion="mi-alacena">Lista del supermercado</li>
+                <li data-seccion="estadisticas">Estadísticas</li>
                 <li data-seccion="recetas">Recetas</li>
+                <li style="margin-top: 400px;" data-seccion="inicio">Compartir Alacena</li>
             </ul>
         </nav>
     </aside>
 
+    <!-- CONTENIDO PRINCIPAL -->
     <div class="main-container">
+
+        <!-- HEADER SIN COLOR -->
         <header class="top-header">
             <div class="info-usuario">
-                <h3>Alacena de: Usuario</h3>
-                <!-- Eliminado el form con url_for('logout') -->
+                <h3 style="color: white;">Alacena de: Usuario</h3>
             </div>
-
-            <!-- Eliminado el <a href="{{ url_for('logout') }}">Salir</a> -->
-            <a class="btn-salir" href="#">Salir</a> <!-- link dummy para que no tire error -->
+            <a class="btn-salir" href="#">Salir</a>
         </header>
 
+        <!-- DASHBOARD -->
         <div class="dashboard">
-            <div class="left-column">
-                <div id class="panel-container productos-total">
-                    <h3>Total de productos:</h3>
-                    <p class="numero">42</p>
+
+            <!-- CONTENEDOR CENTRADO -->
+            <div class="center-column">
+
+                <!-- SECCIÓN DE STOCK (RECUADRO CELESTE) -->
+                <div class="stock-section">
+                    <h2>Stock</h2>
+
+                    <div id="stock-count">
+                        {{ total_items }} ítems
+                    </div>
+
+                    <!-- TEXTAREA GRANDE PARA ESCRIBIR / MOSTRAR PRODUCTOS -->
+                    <textarea id="stock-items" placeholder="Productos escaneados..."></textarea>
                 </div>
-                <div class="panel-container productos-vencimiento">
-                    <h3>Productos por vencer:</h3>
-                    <p class="numero">42</p>
-                </div>
-            </div>
-            
-            <div class="right-column">
-                <div class="panel-container productos-agotados">
-                    <h3>Productos por agotarse:</h3>
-                    <p class="numero">42</p>
-                </div>
-                <div class="panel-container lista-sugerida">
-                    <h3>Lista de compras sugeridas:</h3>
-                        <p>• producto_1</p>
-                        <p>• producto_2</p>
-                        <p>• producto_3</p>
-                    <button class="btn">Ver lista completa</button>
-                </div>
+
+                <!-- BOTÓN CENTRADO Y GRANDE -->
+                <button class="scan-btn">Escanear productos</button>
+
             </div>
         </div>
     </div>
 </div>
 
 {% endblock %}
+
