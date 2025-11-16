@@ -2,7 +2,6 @@ from flask import Flask, render_template, request, redirect, url_for, flash, ses
 import requests
 from datetime import timedelta
 
-print("🔥 ESTE ES EL APP.PY QUE SE ESTÁ EJECUTANDO 🔥")
 
 
 app = Flask(__name__)
@@ -134,6 +133,13 @@ def page_not_found(e):
 @app.route('/test-dashboard')
 def test_dashboard():
     return render_template('dashboard.html')
+
+@app.route('/shopping_list')
+def shopping_list():
+    return render_template('shopping_list.html')
+
+    
+
 
 
 if __name__ == '__main__':

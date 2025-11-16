@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block title %}Lista del Supermercado{% endblock %}
+
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/shopping_list.css') }}">
+{% endblock %}
+
+{% block body %}
+<div class="lista-wrapper">
+    <div class="lista-hoja">
+        <h2 class="titulo-lista">Lista del supermercado</h2>
+
+        <ul class="lista-items">
+            <li>Leche</li>
+            <li>Fideos</li>
+            <li>Yerba</li>
+        </ul>
+
+        <button class="btn-agregar">Agregar producto</button>
+    </div>
+</div>
+{% endblock %}

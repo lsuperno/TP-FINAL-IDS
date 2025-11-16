@@ -152,4 +152,10 @@ footer {
     display: none !important;
 }
 
+.sidebar li a {
+    text-decoration: none; /* quita el subrayado */
+    color: inherit;        /* mantiene el color que ya tenía el <li> */
+    display: block;        /* hace que ocupe todo el <li> */
+    width: 100%;           /* asegura que el clic abarque todo el ancho del <li> */
+}
 
