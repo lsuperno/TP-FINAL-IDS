@@ -64,3 +64,48 @@
 .btn-agregar:hover {
     background-color: #2e593f;
 }
+
+/* Fondo del popup */
+.popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: none; /* se activa con JS */
+    justify-content: center;
+    align-items: center;
+    z-index: 50;
+}
+
+/* Cuadro del popup */
+.popup {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    width: 300px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.popup input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+}
+
+.popup button {
+    padding: 10px;
+    border: none;
+    background-color: #3b7a52;
+    color: white;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.popup button:hover {
+    background-color: #2e593f;
+}

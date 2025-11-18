@@ -1,108 +1,131 @@
 {% extends "base.html" %}
-
 {% block title %}Dashboard{% endblock %}
+
+{% block head %}
+{{ super() }}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css') }}">
+{% endblock %}
 
 {% block body %}
 
-<div class="layout">
+<!-- TOP BANNER (angosto) -->
+<header class="top-banner">
+  <div class="top-banner-inner">
+    <div class="banner-left">
+    </div>
 
-    <!-- SIDEBAR -->
-    <aside class="sidebar" id="sidebar">
-        <nav>
-            <ul>
-                <li><a href="{{ url_for('shopping_list') }}">Lista del supermercado</a></li>
-                <li><a href="{{ url_for('statistics') }}">Estadísticas</a></li>
-                <li><a href="{{ url_for('recipes') }}">Recetas</a></li>
-                <li id="btnShare" style="margin-top: 400px;" data-seccion="inicio">Compartir Alacena</li>
+    <div class="banner-right">
+      <div class="banner-user">
+        <span class="banner-label">Alacena de:</span>
+        <span class="banner-username">{{ username if username else "Usuario" }}</span>
+      </div>
+      <div class="banner-actions">
+        <button id="btnToggleMenu" class="hamburger" aria-label="Abrir menú">☰</button>
+        <a href="{{ url_for('logout') }}" class="logout-btn">Cerrar sesión</a>
 
+      </div>
+    </div>
+  </div>
+</header>
 
-            </ul>
-        </nav>
-    </aside>
+<div class="dashboard-wrap">
 
-    <!-- CONTENIDO PRINCIPAL -->
-    <div class="main-container">
+  <!-- SIDEBAR -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-inner">
+      <h2 class="sidebar-title">Mi Alacena</h2>
 
-        <!-- HEADER SIN COLOR -->
-        <header class="top-header">
-            <div class="info-usuario">
-                <h3 style="color: white;">Alacena de: Usuario</h3>
-            </div>
-            <a class="btn-salir" href="#">Salir</a>
-        </header>
+      <nav class="nav">
+        <a class="nav-link" href="{{ url_for('shopping_list') }}">🛒 Lista del supermercado</a>
+        <a class="nav-link" href="{{ url_for('statistics') }}">📊 Estadísticas</a>
+        <a class="nav-link" href="{{ url_for('recipes') }}">🍳 Recetas</a>
+      </nav>
 
-        <!-- DASHBOARD -->
-        <div class="dashboard">
+      <!-- push to bottom -->
+      <div class="sidebar-bottom">
+        <button id="btnShare" style="margin-top: 400px;" class="nav-link share-white">🔗 Compartir Alacena</button>
+      </div>
+    </div>
+  </aside>
 
-            <!-- CONTENEDOR CENTRADO -->
-            <div class="center-column">
+  <!-- MAIN CONTENT -->
+  <main class="main">
+    <div class="content-center">
 
-                <!-- SECCIÓN DE STOCK (RECUADRO CELESTE) -->
-                <div class="stock-section">
-                    <h2>Stock</h2>
+      <!-- STOCK CARD (contenido intacto) -->
+      <section class="stock-section">
+        <h2>Stock</h2>
 
-                    <div id="stock-count">
-                        {{ total_items }} ítems
-                    </div>
-
-                    <!-- TEXTAREA GRANDE PARA ESCRIBIR / MOSTRAR PRODUCTOS -->
-                    <textarea id="stock-items" placeholder="Productos escaneados..."></textarea>
-                </div>
-
-                <!-- BOTÓN CENTRADO Y GRANDE -->
-                <button class="scan-btn">Escanear productos</button>
-
-            </div>
+        <div id="stock-count">
+            {{ total_items }} ítems
         </div>
+
+        <textarea id="stock-items" placeholder="Productos escaneados..."></textarea>
+
+        <button class="scan-btn">Escanear productos</button>
+      </section>
+
     </div>
+  </main>
+
 </div>
 
-
-<!-- MODAL PARA COMPARTIR -->
-<div id="shareModal" class="modal" style="display: none;">
-    <div class="modal-content">
-        <span id="closeModal" class="close">&times;</span>
-
-        <p>Compartí tu alacena con este enlace:</p>
-
-        <input id="shareLink" type="text" readonly style="width: 100%; padding: 6px; margin-bottom: 10px;">
-
-        <button id="copyBtn">Copiar enlace</button>
-    </div>
+<!-- SHARE MODAL -->
+<div id="shareModal" class="modal" aria-hidden="true">
+  <div class="modal-panel">
+    <button class="modal-close" id="closeModal" aria-label="Cerrar">×</button>
+    <h3>Compartí tu alacena</h3>
+    <input id="shareLink" type="text" readonly>
+    <button id="copyBtn" class="copy-btn">Copiar enlace</button>
+  </div>
 </div>
 
-<!-- SCRIPT PARA COMPARTIR -->
 <script>
 document.addEventListener("DOMContentLoaded", function() {
+  // Sidebar toggle (mobile)
+  const sidebar = document.getElementById('sidebar');
+  const btnToggle = document.getElementById('btnToggleMenu');
 
-    const sessionId = "{{ session_id }}";  
-    const link = window.location.origin + "/alacena?session=" + sessionId;
+  btnToggle.addEventListener('click', () => {
+    sidebar.classList.toggle('open');
+  });
 
-    const modal = document.getElementById("shareModal");
-    const btn = document.getElementById("btnShare");
-    const span = document.getElementById("closeModal");
-    const shareLink = document.getElementById("shareLink");
-    const copyBtn = document.getElementById("copyBtn");
+  // Share modal logic
+  const sessionId = "{{ session_id }}";
+  const link = window.location.origin + "/pantry?session=" + sessionId;
 
-    // Abrir modal
-    btn.onclick = function() {
-        shareLink.value = link;
-        modal.style.display = "flex";
+  const modal = document.getElementById('shareModal');
+  const btnShare = document.getElementById('btnShare');
+  const closeModal = document.getElementById('closeModal');
+  const shareLink = document.getElementById('shareLink');
+  const copyBtn = document.getElementById('copyBtn');
+
+  btnShare.addEventListener('click', () => {
+    shareLink.value = link;
+    modal.style.display = 'flex';
+    modal.setAttribute('aria-hidden', 'false');
+    shareLink.select();
+  });
+
+  closeModal.addEventListener('click', () => {
+    modal.style.display = 'none';
+    modal.setAttribute('aria-hidden', 'true');
+  });
+
+  copyBtn.addEventListener('click', () => {
+    shareLink.select();
+    document.execCommand('copy');
+    alert('¡Link copiado!');
+  });
+
+  // Close modal clicking outside panel
+  modal.addEventListener('click', (e) => {
+    if (e.target === modal) {
+      modal.style.display = 'none';
+      modal.setAttribute('aria-hidden', 'true');
     }
-
-    // Cerrar modal
-    span.onclick = function() {
-        modal.style.display = "none";
-    }
-
-    // Copiar link
-    copyBtn.onclick = function() {
-        shareLink.select();
-        document.execCommand("copy");
-        alert("¡Link copiado!");
-    }
+  });
 });
 </script>
 
 {% endblock %}
-

@@ -44,6 +44,7 @@ def main():
         return redirect(url_for('dashboard'))
     else:
         return render_template('index.html')
+    
 
 
 @app.route('/register', methods=['GET', 'POST'])

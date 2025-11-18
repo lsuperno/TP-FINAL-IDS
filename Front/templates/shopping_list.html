@@ -9,15 +9,100 @@
 {% block body %}
 <div class="lista-wrapper">
     <div class="lista-hoja">
+
         <h2 class="titulo-lista">Lista del supermercado</h2>
 
-        <ul class="lista-items">
-            <li>Leche</li>
-            <li>Fideos</li>
-            <li>Yerba</li>
-        </ul>
+        <!-- LISTA -->
+        <ul class="lista-items" id="shoppingList"></ul>
 
-        <button class="btn-agregar">Agregar producto</button>
+        <!-- BOTÓN PARA AGREGAR -->
+        <button id="openAddModal" class="btn-agregar">Agregar producto</button>
     </div>
 </div>
+
+<!-- POPUP AGREGAR ITEM -->
+<div id="addModal" class="modal" style="display:none;">
+    <div class="modal-content">
+        <span id="closeAddModal" class="close">&times;</span>
+
+        <h3>Agregar producto</h3>
+        <input id="newItemInput" type="text" placeholder="Escribe un producto...">
+
+        <button id="addItemBtn">Agregar</button>
+    </div>
+</div>
+
+<script>
+// ------------------------------
+// FUNCIONES PRINCIPALES
+// ------------------------------
+
+// Agrega un ítem (usado por Dashboard + popup manual)
+function addToShoppingList(itemName) {
+    const list = JSON.parse(localStorage.getItem("shoppingList") || "[]");
+    list.push(itemName);
+    localStorage.setItem("shoppingList", JSON.stringify(list));
+    renderList();
+}
+
+// Elimina item
+function removeItem(index) {
+    const list = JSON.parse(localStorage.getItem("shoppingList") || "[]");
+    list.splice(index, 1);
+    localStorage.setItem("shoppingList", JSON.stringify(list));
+    renderList();
+}
+
+// Renderiza toda la lista
+function renderList() {
+    const ul = document.getElementById("shoppingList");
+    ul.innerHTML = ""; 
+
+    const list = JSON.parse(localStorage.getItem("shoppingList") || "[]");
+
+    list.forEach((item, index) => {
+        const li = document.createElement("li");
+        li.innerHTML = `
+            ${item}
+            <button class="deleteBtn" onclick="removeItem(${index})">X</button>
+        `;
+        ul.appendChild(li);
+    });
+}
+
+// ------------------------------
+// POPUP PARA AGREGAR MANUAL
+// ------------------------------
+
+document.addEventListener("DOMContentLoaded", function() {
+
+    const modal = document.getElementById("addModal");
+    const openBtn = document.getElementById("openAddModal");
+    const closeBtn = document.getElementById("closeAddModal");
+    const addBtn = document.getElementById("addItemBtn");
+    const input = document.getElementById("newItemInput");
+
+    // Mostrar popup
+    openBtn.onclick = () => {
+        modal.style.display = "flex";
+        input.value = "";
+        input.focus();
+    };
+
+    // Cerrar popup
+    closeBtn.onclick = () => modal.style.display = "none";
+
+    // Agregar ítem manualmente
+    addBtn.onclick = () => {
+        const value = input.value.trim();
+        if (value !== "") {
+            addToShoppingList(value);
+        }
+        modal.style.display = "none";
+    };
+
+    renderList();
+});
+</script>
+
 {% endblock %}
