@@ -2,8 +2,6 @@ from flask import Flask, render_template, request, redirect, url_for, flash, ses
 import requests
 from datetime import timedelta
 
-
-
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'IDS'
 app.permanent_session_lifetime = timedelta(days=30)
@@ -101,8 +99,6 @@ def dashboard():
         return render_template('dashboard.html', session_id=session_id)
     return redirect(url_for('register'))
 
-
-
 @app.route('/cambiar_contraseña')
 def cambiar_contraseña():
     return render_template('reset-password.html')
@@ -144,9 +140,60 @@ def shopping_list():
 def statistics():
     return render_template("statistics.html")
 
-@app.route("/recipes")
+@app.route("/recipes", methods=["GET", "POST"])
 def recipes():
-    return render_template("recipes.html")
+    recetas = []
+    tipo = ""
+    subcat = ""
+
+    if request.method == "POST":
+        query = request.form.get("searchInput", "").strip()
+        tipo = request.form.get("tipo", "")
+        subcat = request.form.get("subcategoria", "")
+
+        if query:
+            url = f"https://www.themealdb.com/api/json/v1/1/search.php?s={query}"
+            res = requests.get(url)
+            if res.status_code == 200:
+                data = res.json()
+                if data.get("meals"):
+                    for meal in data["meals"]:
+                        cat = (meal.get("strCategory") or "").lower()
+                        tags = (meal.get("strTags") or "").lower()
+
+                        # Filtrado según tipo/subcat
+                        if tipo == "bebible":
+                            if cat not in ["shake", "beverage", "drink"]:
+                                continue
+                            if subcat == "frio" and "hot" in tags:
+                                continue
+                            if subcat == "caliente" and "cold" in tags:
+                                continue
+                        if tipo == "comestible":
+                            if cat in ["shake", "beverage", "drink"]:
+                                continue
+                            if subcat == "dulce" and "dessert" not in cat:
+                                continue
+                            if subcat == "salado" and "dessert" in cat:
+                                continue
+
+                        # Crear lista de ingredientes
+                        ingredientes = []
+                        for i in range(1, 21):
+                            ing = meal.get(f"strIngredient{i}")
+                            measure = meal.get(f"strMeasure{i}")
+                            if ing and ing.strip() != "":
+                                ingredientes.append(f"{ing} - {measure}")
+
+                        recetas.append({
+                            "nombre": meal.get("strMeal"),
+                            "imagen": meal.get("strMealThumb"),
+                            "ingredientes": ingredientes,
+                            "instrucciones": meal.get("strInstructions")
+                        })
+
+    return render_template("recipes.html", recetas=recetas, tipo=tipo, subcat=subcat)
+
 
 @app.route('/pantry')
 def shared_pantry():
