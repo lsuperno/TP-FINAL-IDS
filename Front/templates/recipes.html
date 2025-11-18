@@ -1,0 +1,135 @@
+{% extends "base.html" %}
+{% block title %}Recetas{% endblock %}
+
+{% block head %}
+{{ super() }}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css') }}">
+{% endblock %}
+
+{% block body %}
+
+<!-- TOP BANNER (igual al dashboard) -->
+<header class="top-banner">
+  <div class="top-banner-inner">
+    <div class="banner-left"></div>
+
+    <div class="banner-right">
+      <div class="banner-user">
+        <span class="banner-label">Alacena de:</span>
+        <span class="banner-username">{{ username if username else "Usuario" }}</span>
+      </div>
+
+      <div class="banner-actions">
+        <button id="btnToggleMenu" class="hamburger">☰</button>
+        <a href="{{ url_for('logout') }}" class="logout-btn">Cerrar sesión</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="dashboard-wrap">
+
+  <!-- SIDEBAR (idéntico al dashboard) -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-inner">
+      <h2 class="sidebar-title">Mi Alacena</h2>
+
+      <nav class="nav">
+        <a class="nav-link" href="{{ url_for('shopping_list') }}">🛒 Lista del supermercado</a>
+        <a class="nav-link" href="{{ url_for('statistics') }}">📊 Estadísticas</a>
+        <a class="nav-link active" href="{{ url_for('recipes') }}">🍳 Recetas</a>
+      </nav>
+
+      <div class="sidebar-bottom">
+        <button id="btnShare" class="nav-link share-white">🔗 Compartir Alacena</button>
+      </div>
+    </div>
+  </aside>
+
+  <!-- MAIN CONTENT (tarjeta centrada como Stock) -->
+  <main class="main">
+    <div class="content-center">
+
+      <section class="stock-section">
+        <h2>Buscador de Recetas</h2>
+
+        <div class="dashboard-card-content">
+
+          <form method="POST" class="form-recetas">
+
+            <!-- TIPO -->
+            <label>Tipo:</label>
+            <select name="tipo" id="tipo">
+              <option value="">Seleccionar...</option>
+              <option value="bebible" {% if tipo == "bebible" %}selected{% endif %}>Bebible</option>
+              <option value="comestible" {% if tipo == "comestible" %}selected{% endif %}>Comestible</option>
+            </select>
+
+            <!-- SUBCATEGORÍA -->
+        <label>Subcategoría:</label>
+        <select name="subcategoria" id="subcategoria">
+            <option value="">Seleccionar...</option>
+
+            {% if tipo == "" %}
+                <!-- Mostrar TODO si el usuario todavía no eligió tipo -->
+                <option value="frio">Frío (bebible)</option>
+                <option value="caliente">Caliente (bebible)</option>
+                <option value="dulce">Dulce (comestible)</option>
+                <option value="salado">Salado (comestible)</option>
+
+            {% elif tipo == "bebible" %}
+                <option value="frio" {% if subcat=="frio" %}selected{% endif %}>Frío</option>
+                <option value="caliente" {% if subcat=="caliente" %}selected{% endif %}>Caliente</option>
+
+            {% elif tipo == "comestible" %}
+                <option value="dulce" {% if subcat=="dulce" %}selected{% endif %}>Dulce</option>
+                <option value="salado" {% if subcat=="salado" %}selected{% endif %}>Salado</option>
+            {% endif %}
+        </select>
+
+
+
+            <!-- BUSCADOR -->
+            <input type="text" name="searchInput" id="searchInput" placeholder="Buscar receta..." required>
+
+            <button type="submit" class="scan-btn">Buscar</button>
+
+          </form>
+
+        </div>
+      </section>
+
+      <!-- RESULTADOS -->
+      <section class="recipes-results" style="margin-top: 25px; width: 100%;">
+
+        {% if recetas %}
+          {% for r in recetas %}
+            <div class="card">
+              <h2>{{ r.nombre }}</h2>
+              <img src="{{ r.imagen }}">
+
+              <h3>Ingredientes:</h3>
+              <ul>
+                {% for ing in r.ingredientes %}
+                  <li>{{ ing }}</li>
+                {% endfor %}
+              </ul>
+
+              <h3>Preparación:</h3>
+              <p>{{ r.instrucciones }}</p>
+            </div>
+          {% endfor %}
+        {% else %}
+          {% if request.method == "POST" %}
+            <p>No se encontraron recetas.</p>
+          {% endif %}
+        {% endif %}
+
+      </section>
+
+    </div>
+  </main>
+
+</div>
+
+{% endblock %}
