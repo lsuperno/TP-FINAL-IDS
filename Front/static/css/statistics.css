@@ -1,0 +1,58 @@
+.breadcrumbs {
+  position: relative;
+  padding-top: 160px;
+  padding-bottom: 120px;
+  z-index: 2;
+  text-align: left;
+  background-color: #041406;
+  background-image: url("../images/bread-bg/banner.jpg"); /*imagen del banner*/
+  background-size: cover;
+  background-position: right;
+  background-repeat: no-repeat;
+  -webkit-box-shadow: 0px 7px 30px rgba(0, 0, 0, 0.075);
+          box-shadow: 0px 7px 30px rgba(0, 0, 0, 0.075);
+}
+
+body {
+    background-color: #fffcf8;
+    font-size: 14px; 
+}
+
+.stats-wrapper {
+    width: 100%;
+    max-width: 1000px; 
+    margin: 40px auto;
+}
+
+/* Título más chico */
+.stats-title {
+    text-align: center;
+    margin-bottom: 60px;
+    font-size: 50spx;
+    color: #fffcf8;
+}
+
+/* grid para poner las cards una al lado de la otra */
+.cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 80px; /* espacio entre tarjetas */
+}
+
+.card {
+    background: #fffcf8;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 0 6px rgba(0,0,0,0.1);
+}
+
+.card h2 {
+    margin-bottom: 6px;
+    font-size: 16px;
+}
+
+.card .desc {
+    color: #3f3f3f;
+    margin-bottom: 12px;
+    font-size: 13px;
+}
