@@ -969,7 +969,6 @@ ol {
   font-weight: 700;
   position: relative;
   line-height: 28px;
-  text-transform: capitalize;
 }
 
 @media only screen and (min-width: 768px) and (max-width: 991px) {

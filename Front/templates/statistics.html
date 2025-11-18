@@ -1,0 +1,97 @@
+{% extends "base.html" %}
+{% block body %}
+
+<link rel="stylesheet" href="{{ url_for('static', filename='css/statistics.css') }}">
+
+<div class="breadcrumbs">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-lg-6 offset-lg-3 col-md-12 col-12">
+        <div class="breadcrumbs-content">
+          <h1 class="page-title">Estadísticas de tu alacena</h1>
+          <ul class="breadcrumb-nav">
+            <li><a href="{{ url_for('test_dashboard') }}">Inicio</a></li> <!-- vuelve al dashboard -->
+            <li>Estadísticas</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="stats-wrapper">
+
+    <!-- contenedor que permite que se vean uno al lado del otro -->
+    <div class="cards-grid">
+
+        <!-- gráfico de barras -->
+        <div class="card">
+            <h2>Consumo según tu presupuesto</h2>
+            <canvas id="barChart"></canvas>
+        </div>
+
+        <!-- gráfico de torta -->
+        <div class="card">
+            <h2>Productos por categoría</h2>
+            <p class="desc">Muestra el porcentaje de productos según su tipo.</p>
+            <canvas id="pieChart"></canvas>
+        </div>
+
+    </div>
+
+</div>
+
+<!-- Chart.js -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+    /* 
+    ---------------------------------------------------------
+    datos de prueba
+    ---------------------------------------------------------
+    */
+
+    // grafico de barras
+    const barData = {
+        labels: ["Semana 1", "Semana 2", "Semana 3", "Semana 4"],
+        values: [12000, 15000, 9000, 13000]
+    };
+
+    new Chart(document.getElementById("barChart"), {
+        type: "bar",
+        data: {
+            labels: barData.labels,
+            datasets: [{
+                label: "Gasto estimado (ARS)",
+                data: barData.values
+            }]
+        },
+        options: {
+            layout: {
+                padding: {
+                    top: 60 
+                }
+            }
+        }
+    });
+
+
+    // grafico de torta
+    const pieData = {
+        labels: ["Snacks", "Bebidas", "Vegetales", "Lácteos"],
+        values: [20, 30, 25, 25]
+    };
+
+    new Chart(document.getElementById("pieChart"), {
+        type: "pie",
+        data: {
+            labels: pieData.labels,
+            datasets: [{
+                data: pieData.values
+            }]
+        }
+    });
+
+</script>
+
+{% endblock %}
