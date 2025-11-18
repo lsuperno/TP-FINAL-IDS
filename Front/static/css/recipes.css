@@ -1,0 +1,127 @@
+/* =========================================================
+   RECETAS — ESTILO UNIFICADO CON DASHBOARD
+   Usa variables, sombras y colores del dashboard
+   ========================================================= */
+
+/* ----------- TARJETA DEL FORMULARIO ----------- */
+.card-recetas {
+    background: var(--cream);
+    border-radius: var(--radius);
+    padding: 22px;
+    margin-bottom: 28px;
+    box-shadow: var(--shadow);
+    max-width: 750px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Título del formulario */
+.card-recetas h3 {
+    color: var(--green-800);
+    text-align: center;
+    font-size: 1.6rem;
+    font-weight: 700;
+    margin-bottom: 18px;
+}
+
+/* Formulario */
+.card-recetas form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Labels */
+.card-recetas label {
+    font-weight: 600;
+    color: var(--green-800);
+}
+
+/* Inputs y selects */
+.card-recetas select,
+.card-recetas input[type="text"] {
+    padding: 9px 12px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    min-width: 140px;
+    background: var(--white);
+    font-size: 1rem;
+}
+
+/* Botón — igual al botón “Escanear productos” */
+.card-recetas button {
+    background: var(--green-800);
+    color: var(--white);
+    border: none;
+    padding: 12px 18px;
+    border-radius: 10px;
+    font-size: 1rem;
+    cursor: pointer;
+    box-shadow: 0 6px 12px rgba(0,0,0,0.08);
+    transition: all .15s ease-in-out;
+}
+
+.card-recetas button:hover {
+    background: #1b4a2b;
+    transform: translateY(-2px);
+}
+
+
+/* =========================================================
+   TARJETA DE RESULTADOS DE RECETAS
+   ========================================================= */
+
+.card {
+    background: var(--cream);
+    border-radius: var(--radius);
+    padding: 22px;
+    margin-bottom: 28px;
+    box-shadow: var(--shadow);
+}
+
+/* Título de la receta */
+.card h2 {
+    color: var(--green-800);
+    text-align: center;
+    margin-bottom: 15px;
+    font-size: 1.7rem;
+}
+
+/* Imagen */
+.card img {
+    width: 100%;
+    max-height: 300px;
+    object-fit: cover;
+    border-radius: 12px;
+    margin-bottom: 15px;
+}
+
+/* Subtítulos */
+.card h3 {
+    color: var(--green-800);
+    margin-top: 18px;
+    margin-bottom: 8px;
+    font-size: 1.25rem;
+}
+
+/* Lista de ingredientes */
+.card ul {
+    list-style: disc inside;
+    margin-bottom: 15px;
+    padding-left: 10px;
+    color: #333;
+}
+
+/* Instrucciones */
+.card p {
+    line-height: 1.65;
+    color: #333;
+    font-size: 1rem;
+}
+
+/* Espaciado entre tarjetas */
+.recipes-results {
+    margin-top: 28px;
+}
